@@ -1,0 +1,864 @@
+<style>
+.cpp {
+  padding: 40px 0;
+  background: #fff;
+}
+
+.cpp__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 70px;
+}
+
+.cpp__gallery {
+  width: 100%;
+}
+
+.cpp__main-image {
+  width: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.cpp__main-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cpp__thumbs {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cpp-thumb {
+  width: 160px;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  cursor: pointer;
+  padding: 0;
+  transition: all .2s ease;
+}
+
+.cpp-thumb.active {
+  border: 2px solid #111;
+}
+
+.cpp-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cpp__content {
+  max-width: 520px;
+}
+
+.cpp__reviews {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.cpp__stars {
+  color: #ff4b3a;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.cpp__reviews span {
+  font-size: 15px;
+  color: #666;
+}
+
+.cpp__title {
+  margin: 0 0 18px;
+  font-size: 46px;
+  line-height: 1.05;
+  font-weight: 700;
+  color: #222;
+}
+
+.cpp__description {
+  margin-bottom: 30px;
+  color: #666;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.cpp__group {
+  margin-bottom: 28px;
+}
+
+.cpp__group h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+
+.cpp__shape-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.cpp-shape-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 18px 12px;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.cpp-shape-card.active {
+  border: 2px solid #ff4b3a;
+}
+
+.cpp-shape-card.active::after {
+  content: "✓";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff4b3a;
+  color: #fff;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpp-shape-card__icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.shape-rectangle {
+  width: 52px;
+  height: 32px;
+  border: 1px solid #999;
+}
+
+.shape-square {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #999;
+}
+
+.shape-rounded {
+  width: 50px;
+  height: 33px;
+  border: 1px solid #999;
+  border-radius: 8px;
+}
+.shape-rectangle {
+  width: 52px;
+  height: 32px;
+  border: 1px solid #999;
+} 
+.cpp-shape-card__title {
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  color: #222;
+}
+
+.cpp-shape-card__subtitle {
+  margin-top: 6px;
+  text-align: center;
+  color: #888;
+  font-size: 13px;
+}
+
+.cpp__toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.cpp-toggle-btn {
+  border: 1px solid #d9d9d9;
+  background: #fff;
+  height: 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all .25s ease;
+}
+
+.cpp-toggle-btn.active {
+  border: 2px solid #ff4b3a;
+  color: #ff4b3a;
+}
+
+.cpp-select {
+  width: 100%;
+  height: 56px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 15px;
+  background: #fff;
+}
+
+.cpp__addon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.cpp-addon {
+  height: 48px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  cursor: pointer;
+  background: #fff;
+}
+
+.cpp-addon input {
+  width: 16px;
+  height: 16px;
+}
+
+.cpp__qty-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.cpp__qty-head h3 {
+  margin: 0;
+}
+
+.cpp__qty-head span {
+  color: #ff4b3a;
+  font-size: 13px;
+}
+
+.cpp__qty-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cpp-qty {
+  min-width: 70px;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid #d7d7d7;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all .25s ease;
+}
+
+.cpp-qty.active {
+  background: #ff4b3a;
+  color: #fff;
+  border-color: #ff4b3a;
+}
+
+.cpp-upload {
+  margin-top: 22px;
+}
+
+.cpp-upload-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; 
+  min-width: 280px;
+  width: fit-content;  
+  padding: 10px;
+  border: 1px dashed #777;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cpp-upload input {
+  display: none;
+}
+
+.cpp-price-box {
+  margin-top: 30px;
+}
+
+.cpp-price {
+  color: #ff4b3a;
+  font-size: 54px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.cpp-tax {
+  color: #888;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.cpp-piece-price {
+  margin-top: 8px;
+  color: #222;
+  font-size: 16px;
+}
+
+.cpp-actions {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cpp-cart-btn {
+  height: 56px;
+  border: none;
+  background: #ff4b3a;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cpp-buy-btn {
+  height: 56px;
+  border: 1px solid #111;
+  background: #fff;
+  color: #111;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cpp-cart-btn:hover {
+  opacity: .92;
+}
+
+.cpp-buy-btn:hover {
+  background: #111;
+  color: #fff;
+}
+
+@media screen and (max-width: 990px) {
+
+  .cpp__container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .cpp__content {
+    max-width: 100%;
+  }
+
+  .cpp__title {
+    font-size: 34px;
+  }
+
+  .cpp__shape-grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .cpp-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 749px) {
+
+  .cpp {
+    padding: 20px 0;
+  }
+
+  .cpp__container {
+    padding: 0 16px;
+  }
+
+  .cpp__title {
+    font-size: 28px;
+  }
+
+  .cpp-thumb {
+    width: 90px;
+  }
+
+  .cpp__shape-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cpp__toggle-grid,
+  .cpp__addon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cpp-price {
+    font-size: 42px;
+  }
+}
+</style>
+
+<section id="custom-print-product-{{ section.id }}" class="cpp">
+
+  <div class="cpp__container">
+
+    <!-- LEFT COLUMN - GALLERY -->
+    <div class="cpp__gallery">
+      <div class="cpp__main-image">
+        {% assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media %}
+        {% if featured_media %}
+          <img id="CPPMainImage" src="{{ featured_media | image_url: width: 1200 }}" alt="{{ featured_media.alt }}" width="1200" height="1200">
+        {% endif %}
+      </div>
+
+      <div class="cpp__thumbs">
+        {% for media in product.media %}
+          {% if media.media_type == 'image' %}
+            <button type="button" class="cpp-thumb {% if forloop.first %}active{% endif %}" data-image="{{ media | image_url: width: 1200 }}">
+              <img src="{{ media | image_url: width: 250 }}" alt="{{ media.alt }}" width="250" height="250">
+            </button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="cpp__content">
+
+      <div class="cpp__reviews">
+        <div class="cpp__stars">★★★★★</div>
+        <span>7 reviews</span>
+      </div>
+
+      <h1 class="cpp__title">{{ product.title }}</h1>
+      <div class="cpp__description">{{ product.description }}</div>
+
+      {% form 'product', product, id: 'CPPForm' %}
+        <input type="hidden" name="id" id="CPPVariantId" value="{{ product.selected_or_first_available_variant.id }}">
+        <input type="hidden" name="quantity" id="realQuantity" value="100">
+
+        <!-- SHAPE -->
+        {% assign shape_option = product.options_with_values | where: 'name', 'Shape' | first %}
+        {% if shape_option %}
+          <div class="cpp__group">
+            <h3>{{section.settings.choose_shape_text }}</h3>  
+            <div class="cpp__shape-grid">
+              {% for value in shape_option.values %}
+                <button type="button" class="cpp-shape-card" data-option-position="{{ shape_option.position }}" data-value="{{ value }}">
+                  <div class="cpp-shape-card__icon">
+                    {% case value %}
+                      {% when 'Reactangle' %}  
+                       <div class="shape-rectangle">  
+                      </div>
+                      {% when 'Square' %}
+                      <div class="shape-square">
+                      </div>
+                      {% when 'Rounded Corner' %}
+                       <div class="shape-rounded">
+                      </div>  
+                     {% else %}
+                       <div class="shape-unknown"> 
+                      </div> 
+                    {% endcase %} 
+                  </div>  
+                  <div class="cpp-shape-card__title">{{ value }}</div>
+                  <div class="cpp-shape-card__subtitle">Visiting Card</div>
+                </button>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- PRINT TYPE -->
+        {% assign print_option = product.options_with_values | where: 'name', 'Print Type' | first %}
+        {% if print_option %}
+          <div class="cpp__group">
+            <h3>{{section.settings.select_print_type_text }}</h3> 
+            <div class="cpp__toggle-grid">
+              {% for value in print_option.values %}
+
+                 {% case value %}
+                      {% when 'Single Side Print' %}  
+                        <button type="button" class="cpp-toggle-btn" data-option-position="{{ print_option.position }}" data-value="{{ value }}">
+                          <img src="https://cdn.shopify.com/s/files/1/0684/9265/6711/files/icon1.png?v=1782364605"> &nbsp {{ value }}
+                        </button>
+                      {% when 'Double Side Print' %}
+                       <button type="button" class="cpp-toggle-btn" data-option-position="{{ print_option.position }}" data-value="{{ value }}">
+                        <img src="https://cdn.shopify.com/s/files/1/0684/9265/6711/files/icon2.png?v=1782364605"> &nbsp {{ value }}
+                      </button>
+                     {% else %}
+                       <button type="button" class="cpp-toggle-btn" data-option-position="{{ print_option.position }}" data-value="{{ value }}">
+                        {{ value }}
+                      </button>
+                    {% endcase %} 
+               
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- MATERIAL -->
+        {% assign material_option = product.options_with_values | where: 'name', 'Material' | first %}
+        {% if material_option %}
+          <div class="cpp__group">
+            <h3>{{section.settings.select_material_text }}</h3>
+            <select id="CPPMaterialSelect" class="cpp-select" data-option-position="{{ material_option.position }}">
+              {% for value in material_option.values %}
+                <option value="{{ value }}">{{ value }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+
+        <!-- PREMIUM FINISH -->
+        {% assign premium_finishing = product.metafields.custom.product_premium_finishing %}
+        {% if premium_finishing and premium_finishing.value.size > 0 %}
+          <div class="cpp__group">
+            <h3>{{section.settings.add_premium_finishing_text}}</h3> 
+            <div class="cpp__addon-grid">
+              {% for finish in premium_finishing.value %}
+                <label class="cpp-addon">
+                  <input type="checkbox" name="properties[Premium Finish]" value="{{ finish }}">
+                  <span>{{ finish }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %} 
+
+        <!-- QUANTITY -->
+        <div class="cpp__group">
+          <div class="cpp__qty-head">
+            <h3>Quantity</h3>
+            <span>Minimum order quantity is 100</span>
+          </div>
+          <div class="cpp__qty-grid">
+            
+            {% assign custom_quantity = product.metafields.custom.product_custom_quantity %}
+            {% if custom_quantity and custom_quantity.value.size > 0 %}         
+
+             {% for qty in custom_quantity.value %}
+                <button type="button" class="cpp-qty {% if forloop.index == 1 %}active{% else %} {% endif %}" data-qty="{{ qty }}">{{ qty }}</button> 
+              {% endfor %} 
+               <button type="button" class="cpp-qty" data-qty="custom">Custom</button> 
+            {% endif %} 
+
+          </div>
+        </div>
+
+        <!-- FILE UPLOAD -->
+        <div class="cpp__group"> 
+          <div class="cpp-upload">
+            <label id="CPPFileLabel" class="cpp-upload-label" for="CPPFileUpload">
+              <img src="https://cdn.shopify.com/s/files/1/0684/9265/6711/files/upload-icon.png?v=1782365122"> &nbsp {{section.settings.upload_your_file_text }}</label> 
+            <input type="file" id="CPPFileUpload" name="properties[Design File]" accept=".pdf,.jpg,.jpeg,.png,.ai,.eps,.psd">
+          </div>
+        </div>
+
+        <!-- PRICE -->
+        <div class="cpp-price-box">
+          <div id="CPPPrice" class="cpp-price">{{ product.selected_or_first_available_variant.price | money }}</div>
+          <div class="cpp-tax">{{section.settings.tax_note }}</div>  
+          <div id="CPPPiecePrice" class="cpp-piece-price">For 100 Qty</div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="cpp-actions">
+          <button type="submit" class="cpp-cart-btn">{{ section.settings.add_to_cart_button_text }}</button>
+          <button type="button" id="CPPBuyNow" class="cpp-buy-btn">{{ section.settings.buy_now_button_text }}</button>
+        </div>
+
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('✅ Custom Product Script Loaded');
+
+  const productVariants = {{ product.variants | json }};
+  const moneyFormat = {{ shop.money_format | json }};
+  let selectedOptions = [];
+  let selectedQty = 100;
+
+  const variantInput = document.getElementById('CPPVariantId');
+  const quantityInput = document.getElementById('realQuantity');
+  const mainImage = document.getElementById('CPPMainImage');
+
+  // Safety check
+  if (!productVariants || productVariants.length === 0) {
+    console.error('No variants found');
+    return;
+  }
+
+  selectedOptions = [...productVariants[0].options];
+
+  // === MONEY FORMATTER (vendored — does not depend on theme loading Shopify.formatMoney) ===
+  function formatMoney(cents, format) {
+    if (typeof cents !== 'number') cents = parseFloat(cents) || 0;
+    const formatString = format || '${{amount}}';
+    const placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+
+    function formatWithDelimiters(number, precision, thousands, decimal) {
+      precision = (typeof precision === 'undefined') ? 2 : precision;
+      thousands = (typeof thousands === 'undefined') ? ',' : thousands;
+      decimal = (typeof decimal === 'undefined') ? '.' : decimal;
+
+      if (isNaN(number) || number === null) return 0;
+
+      number = (number / 100.0).toFixed(precision);
+
+      const parts = number.split('.');
+      const dollarsPart = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands);
+      const centsPart = parts[1] ? decimal + parts[1] : '';
+
+      return dollarsPart + centsPart;
+    }
+
+    const match = formatString.match(placeholderRegex);
+    const type = match ? match[1] : 'amount';
+    let value;
+
+    switch (type) {
+      case 'amount_no_decimals':
+        value = formatWithDelimiters(cents, 0);
+        break;
+      case 'amount_with_comma_separator':
+        value = formatWithDelimiters(cents, 2, '.', ',');
+        break;
+      case 'amount_no_decimals_with_comma_separator':
+        value = formatWithDelimiters(cents, 0, '.', ',');
+        break;
+      default:
+        value = formatWithDelimiters(cents, 2);
+    }
+
+    return formatString.replace(placeholderRegex, value);
+  }
+
+  // === IMAGE GALLERY ===
+  document.querySelectorAll('.cpp-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      document.querySelectorAll('.cpp-thumb').forEach(el => el.classList.remove('active'));
+      thumb.classList.add('active');
+      if (mainImage) mainImage.src = thumb.dataset.image;
+    });
+  });
+
+  // === ACTIVE STATE HELPER ===
+  function updateActiveStates() {
+    document.querySelectorAll('.cpp-shape-card, .cpp-toggle-btn').forEach(btn => {
+      const pos = parseInt(btn.dataset.optionPosition) - 1;
+      if (selectedOptions[pos] === btn.dataset.value) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    const materialSelect = document.getElementById('CPPMaterialSelect');
+    if (materialSelect) {
+      const pos = parseInt(materialSelect.dataset.optionPosition) - 1;
+      if (selectedOptions[pos]) materialSelect.value = selectedOptions[pos];
+    }
+  }
+
+  // === VARIANT OPTION BUTTONS ===
+  document.querySelectorAll('.cpp-shape-card, .cpp-toggle-btn').forEach(button => {
+    button.style.cursor = 'pointer'; // Force cursor
+    button.addEventListener('click', function(e) {
+      console.log('Shape/Print button clicked:', this.dataset.value);
+      const position = parseInt(this.dataset.optionPosition) - 1;
+      selectedOptions[position] = this.dataset.value;
+      updateActiveStates();
+      updateVariant();
+    });
+  });
+
+  // === MATERIAL SELECT ===
+  const materialSelect = document.getElementById('CPPMaterialSelect');
+  if (materialSelect) {
+    materialSelect.addEventListener('change', () => {
+      console.log('Material changed to:', materialSelect.value);
+      const position = parseInt(materialSelect.dataset.optionPosition) - 1;
+      selectedOptions[position] = materialSelect.value;
+      updateVariant();
+    });
+  }
+
+  // === QUANTITY BUTTONS ===
+  document.querySelectorAll('.cpp-qty').forEach(btn => {
+    btn.style.cursor = 'pointer';
+    btn.addEventListener('click', function() {
+      console.log('Quantity clicked:', this.dataset.qty);
+      document.querySelectorAll('.cpp-qty').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      let qty = this.dataset.qty;
+      if (qty === 'custom') {
+        qty = prompt('Enter custom quantity (min 100)', '100');
+        if (!qty || isNaN(qty) || parseInt(qty) < 100) qty = 100;
+      }
+      selectedQty = parseInt(qty);
+      quantityInput.value = selectedQty;
+      updatePricing();
+    });
+  });
+
+  // === FILE UPLOAD ===
+  const fileInput = document.getElementById('CPPFileUpload');
+  const fileLabel = document.getElementById('CPPFileLabel');
+  if (fileInput && fileLabel) {
+    fileInput.addEventListener('change', function() {
+      if (this.files.length) fileLabel.textContent = this.files[0].name;
+    });
+  }
+
+  // === VARIANT UPDATE ===
+  function updateVariant() {
+    const variant = productVariants.find(v => v.options.every((opt, i) => opt === selectedOptions[i]));
+    if (variant) {
+      variantInput.value = variant.id;
+      updateVariantImage(variant);
+      updatePricing();
+    } else {
+      console.warn('No matching variant for:', selectedOptions);
+    }
+  }
+
+  function updateVariantImage(variant) {
+    if (variant.featured_image && mainImage) {
+      mainImage.src = variant.featured_image.src;
+    }
+  }
+
+  function updatePricing() {
+    const variant = productVariants.find(v => String(v.id) === String(variantInput.value));
+    if (!variant) return;
+
+    const total = variant.price * selectedQty;
+    document.getElementById('CPPPrice').innerHTML = formatMoney(total, moneyFormat);
+    document.getElementById('CPPPiecePrice').innerHTML = `For ${selectedQty} Qty (${formatMoney(variant.price, moneyFormat)}/piece)`;
+  }
+
+  // === BUY NOW ===
+  document.getElementById('CPPBuyNow')?.addEventListener('click', () => {
+    const form = document.getElementById('CPPForm');
+    if (form) {
+      let qtyField = form.querySelector('input[name="quantity"]');
+      if (!qtyField) {
+        qtyField = document.createElement('input');
+        qtyField.type = 'hidden';
+        qtyField.name = 'quantity';
+        form.appendChild(qtyField);
+      }
+      qtyField.value = selectedQty;
+
+      const returnInput = document.createElement('input');
+      returnInput.type = 'hidden';
+      returnInput.name = 'return_to';
+      returnInput.value = '/checkout';
+      form.appendChild(returnInput);
+
+      form.submit();
+    }
+  });
+
+  // === INITIALIZE ===
+  updateActiveStates();
+  updateVariant();
+  updatePricing();
+
+  console.log('✅ Custom Product JS Initialized Successfully');
+});
+</script> 
+
+{% schema %}
+{
+  "name": "Custom Print Product",
+  "tag": "section",
+  "class": "section",
+  "settings": [         
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "Review Count",
+      "default": "7 Reviews"
+    },
+    {
+      "type": "text",
+      "id": "choose_shape_text",
+      "label": "Choose Shape Text",
+      "default": "Choose Shape"
+    },
+    {
+      "type": "text",
+      "id": "select_print_type_text",
+      "label": "Select Print Type Text",
+      "default": "Select Print Type"
+    },
+    {
+      "type": "text",
+      "id": "select_material_text",
+      "label": "Select Material Text",
+      "default": "Select Material"
+    },  
+    {
+      "type": "text",
+      "id": "add_premium_finishing_text",
+      "label": "Add Premium Finishing Text",
+      "default": "Add Premium Finishing"
+    },  
+    {
+      "type": "text",
+      "id": "upload_your_file_text",
+      "label": "Upload Your File Text",
+      "default": "Upload Your File"
+    },    
+    {
+      "type": "text",
+      "id": "tax_note",
+      "label": "Tax Note",
+      "default": "Inclusive of all taxes"
+    },    
+    {
+      "type": "text",
+      "id": "add_to_cart_button_text",
+      "label": "Add To Cart Button Text",
+      "default": "Add To Cart"
+    },    
+    {
+      "type": "text",
+      "id": "buy_now_button_text",
+      "label": "Buy Now Button Text",
+      "default": "Buy Now"
+    }    
+  ],
+  "presets": [
+    {
+      "name": "Custom Print Product"
+    }
+  ]
+}
+{% endschema %}
+ 
